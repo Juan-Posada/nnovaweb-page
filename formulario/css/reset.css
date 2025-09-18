@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* /Reset CSS/ */
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: "Work Sans", sans-serif;
+    font-weight: normal;
+}
+
+/* /Eliminar decoración de enlaces/ */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* /Reset de listas/ */
+ul,
+ol {
+    list-style: none;
+}
+
+/* /Establece tipografia base/ */
+body {
+    font-size: 16px;
+    line-height: 1.6;
+    display: flex;
+    height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* /Imagenes responsivas/ */
+img,
+video,
+svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* /Eliminar estilos de botones/ */
+button,
+input,
+textarea, 
+select {
+    font-family: inherit;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+/* /Asegurar que los elementos bloque ocupen todo su ancho disponible/ */
+html, body {
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,134 @@
+<?php
+$page_title = "Formulario de Solicitud de Servicio";
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+</head>
+<body>
+    <main class="master-container">
+        <section class="left">
+            <div class="title-container">
+                <h1> SOLICITUD SERVICIO </h1>
+                <h2> Envía todos tus datos para adquirir nuestros servicios e iniciar sesión </h2>
+            </div>
+            <div class="form-container">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="tipo_usuario">Tipo de usuario:</label>
+                        <select id="tipo_usuario" name="tipo_usuario" required>
+                            <option value="">Seleccione...</option>
+                            <option value="Persona Natural">Persona Natural</option>
+                            <option value="Persona Jurídica">Persona Jurídica</option>
+                        </select>
+                        <span class="error" id="error-tipo_usuario"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre">Nombre de quien realiza la solicitud del servicio:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                        <span class="error" id="error-nombre"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tipo_identificacion">Tipo de Identificación:</label>
+                        <select id="tipo_identificacion" name="tipo_identificacion" required>
+                            <option value="">Seleccione...</option>
+                            <option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
+                            <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                            <option value="Cédula Extranjería">Cédula Extranjería</option>
+                            <option value="Pasaporte">Pasaporte</option>
+                            <option value="NIT">NIT</option>
+                        </select>
+                        <span class="error" id="error-tipo_identificacion"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="numero_identificacion">No. Identificación:</label>
+                        <input type="text" id="numero_identificacion" name="numero_identificacion" required>
+                        <span class="error" id="error-numero_identificacion"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Correo electrónico:</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="error" id="error-email"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="celular">Celular:</label>
+                        <input type="tel" id="celular" name="celular" required>
+                        <span class="error" id="error-celular"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="tel" id="telefono" name="telefono">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre_empresa">Nombre Empresa / Entidad (personas jurídicas):</label>
+                        <input type="text" id="nombre_empresa" name="nombre_empresa" placeholder="Nombre Empresa / Entidad">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nit_rut">NIT/RUT:</label>
+                        <input type="text" id="nit_rut" name="nit_rut" placeholder="NIT / RUT">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descripcion_necesidad">Descripción de la necesidad del servicio:</label>
+                        <textarea id="descripcion_necesidad" name="descripcion_necesidad" required></textarea>
+                        <span class="error" id="error-descripcion_necesidad"></span>
+                    </div>
+            </div>
+                    <button id="button" type="submit">ENVIAR</button>
+                </form>
+
+                
+
+                <div class="start-session">
+                    <h1 class="text-start">¿Ya tienes una cuenta?</h1>
+                    <a href="../cruds/index.html" class="start-button">Inicia sesión</a>
+                </div>
+        </section>
+
+        <section class="right">
+            <div class="exit">
+                <a href="../index.html" class="times">
+                    <img src="img/times.png" alt="times">
+                </a>
+            </div>
+        </section>
+    </main>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript"> emailjs.init('QLLxcOOH21jhrgGpp') </script>
+    <script>
+        const btn = document.querySelector('#button');
+
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+        
+            btn.innerHTML = 'Enviando...';
+        
+            const serviceID = 'service_s2cvs4m';
+            const templateID = 'template_a2j69e4';
+        
+            emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                btn.innerHTML = 'Enviado';
+                alert('Mensaje enviado correctamente!');
+            }, (err) => {
+                btn.value = 'Enviar';
+                alert(JSON.stringify(err));
+            });
+        });
+    </script>
+</body>
+</html>

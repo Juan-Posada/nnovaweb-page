@@ -1,0 +1,302 @@
+:root{
+    --azul-oscuro-logo: #08003F;
+    --azul-claro-logo: #5498FF;
+    --verde-claro-logo: #2ED305;
+    --rojo:rgb(255, 0, 0);
+    --negro: #000000;
+    --blanco: #ffffff;
+    --medida-completa: 100%;
+}
+
+body{
+    background-color: var(--azul-oscuro-logo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main.master-container{
+    width: 1000px;
+    height: 640px;
+    background-color: #EBE5E5;
+    border-radius: 30px;
+    box-shadow:  6px 4px 10px rgba(117, 117, 117, 0.84);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section.left{
+    width: 445px;
+    height: 555px;
+    border-left: var(--azul-oscuro-logo) 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 20px;
+    gap: 30px;
+}
+
+section.right{
+    width: 465px;
+    height: 555px;
+    display: flex;
+    align-items: start;
+    justify-content: end;
+    border-radius: 20px;
+    background: url(../img/meeting.png);
+}
+
+div.exit{
+    width: 75px;
+    height: 40px;
+    border-bottom-left-radius: 20px;
+    background-color: #EBE5E5;
+}
+
+a.times{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--medida-completa);
+    height: var(--medida-completa);
+}
+
+div.title-container{
+    width: 274px;
+    h1{
+        font-size: 26px;
+        font-weight: bolder;
+        color: #000000;
+        text-align: center;
+    }
+    h2{
+        width: 264px;
+        font-size: 14px;
+        font-weight: light;
+        color: #000000;
+        text-align: center;
+    }
+}
+
+div.form-container{
+    width: 250px;
+    height: 260px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    padding-right: 12px;
+}
+
+div.form-group{
+    width: var(--medida-completa);
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    margin-bottom: 15px;
+    label{
+        font-size: 9px;
+        width: var(--medida-completa);
+        color: #2D2D2D;
+    }
+    select, input, textarea{
+        height: 38px;
+        width: var(--medida-completa);
+        background-color: var(--blanco);
+        border-radius: 5px 10px;
+        border-bottom: 2px solid var(--azul-oscuro-logo);
+        padding: 0px 10px;
+        font-size: 16px;
+        color: var(--azul-oscuro-logo);
+    }
+    ::placeholder {
+        color: #636363;
+        font-size: 12px;
+    }
+}
+
+button{
+    height: 40px;
+    width: 250px;
+    background-color: var(--azul-oscuro-logo);
+    border-radius: 10px 5px;
+    padding: 0px 10px;
+    font-size: 16px;
+    color: var(--blanco);
+    font-weight: light;
+}
+
+
+/* Transición global para todos los elementos */
+* {
+    transition: all 0.3s ease;
+}
+
+div.form-container::-webkit-scrollbar {
+    width: 6px; 
+}
+
+div.form-container::-webkit-scrollbar-thumb {
+    background-color: var(--azul-oscuro-logo); 
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+div.form-container::-webkit-scrollbar-thumb:hover {
+    background-color: #0a0054; 
+}
+
+div.form-container::-webkit-scrollbar-track {
+    background-color: #08003fb0; 
+    border-radius: 10px;
+}
+
+
+div.form-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--azul-oscuro-logo) transparent;
+}
+
+
+div.form-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--azul-oscuro-logo) transparent;
+}
+
+
+/* Animación de carga inicial */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    animation: fadeIn 0.8s ease-out;
+}
+
+
+div.form-group select:focus, 
+div.form-group input:focus, 
+div.form-group textarea:focus {
+    border-bottom: 2px solid var(--azul-claro-logo);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+/* Mejoras para el botón de envío */
+button {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(8, 0, 63, 0.4);
+    background-color: #100978;
+}
+
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(8, 0, 63, 0.4);
+}
+
+/* Mejoras para el enlace de salida */
+a.times {
+    transition: all 0.3s ease;
+}
+
+a.times:hover img {
+    transform: rotate(90deg);
+    opacity: 0.8;
+}
+
+/* Animación de entrada para los campos del formulario */
+.form-group {
+    animation: fadeIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-group:nth-child(3) { animation-delay: 0.3s; }
+.form-group:nth-child(4) { animation-delay: 0.4s; }
+.form-group:nth-child(5) { animation-delay: 0.5s; }
+.form-group:nth-child(6) { animation-delay: 0.6s; }
+.form-group:nth-child(7) { animation-delay: 0.7s; }
+.form-group:nth-child(8) { animation-delay: 0.8s; }
+.form-group:nth-child(9) { animation-delay: 0.9s; }
+
+/* Mejoras para scroll en el formulario */
+div.form-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+div.form-container::-webkit-scrollbar-thumb {
+    background-color: var(--azul-claro-logo);
+    border-radius: 10px;
+}
+
+div.form-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+}
+
+/* Mejoras para los mensajes de error */
+span.error {
+    color: var(--rojo);
+    font-size: 10px;
+    transition: all 0.3s ease;
+    height: 15px;
+    display: block;
+    transform-origin: left;
+}
+
+/* Estilos para el mensaje de éxito */
+.success-message {
+    display: none;
+    background-color: rgba(46, 211, 5, 0.2);
+    color: #117a00;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border-left: 3px solid var(--verde-claro-logo);
+    animation: fadeIn 0.5s ease-out;
+    transition: all 0.3s ease;
+}
+
+/* Estilo para el título */
+div.title-container h1, 
+div.title-container h2 {
+    animation: fadeIn 0.8s ease-out;
+}
+
+
+div.start-session{
+    width: 60%;
+    height: 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1.text-start{
+        font-size: 14px;
+    }
+    a.start-button{
+        padding: 8px;
+        background-color: var(--azul-oscuro-logo);
+        color: white;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+}
