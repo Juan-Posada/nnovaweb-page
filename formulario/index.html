@@ -10,6 +10,8 @@ $page_title = "Formulario de Solicitud de Servicio";
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <!-- SweetAlert2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css" rel="stylesheet">
 </head>
 <body>
     <main class="master-container">
@@ -87,16 +89,14 @@ $page_title = "Formulario de Solicitud de Servicio";
                         <textarea id="descripcion_necesidad" name="descripcion_necesidad" required></textarea>
                         <span class="error" id="error-descripcion_necesidad"></span>
                     </div>
-            </div>
-                    <button id="button" type="submit">ENVIAR</button>
-                </form>
-
-                
-
-                <div class="start-session">
-                    <h1 class="text-start">¿Ya tienes una cuenta?</h1>
-                    <a href="../cruds/index.html" class="start-button">Inicia sesión</a>
                 </div>
+                <button id="button" type="submit">ENVIAR</button>
+            </form>
+
+            <div class="start-session">
+                <h1 class="text-start">¿Ya tienes una cuenta?</h1>
+                <a href="../cruds/index.html" class="start-button">Inicia sesión</a>
+            </div>
         </section>
 
         <section class="right">
@@ -107,26 +107,67 @@ $page_title = "Formulario de Solicitud de Servicio";
             </div>
         </section>
     </main>
+    
+    <!-- EmailJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript"> emailjs.init('QLLxcOOH21jhrgGpp') </script>
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+    <script src="js/sweet-alert.js"></script>
+    
     <script>
         const btn = document.querySelector('#button');
 
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault();
         
+            // Cambiar texto del botón y mostrar loading
             btn.innerHTML = 'Enviando...';
+            btn.disabled = true;
+            
+            // Mostrar SweetAlert de carga
+            customSwal.fire({
+                title: 'Enviando mensaje...',
+                text: 'Por favor espere mientras procesamos su solicitud',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                showConfirmButton: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
         
             const serviceID = 'service_s2cvs4m';
             const templateID = 'template_a2j69e4';
         
             emailjs.sendForm(serviceID, templateID, this)
             .then(() => {
-                btn.innerHTML = 'Enviado';
-                alert('Mensaje enviado correctamente!');
-            }, (err) => {
-                btn.value = 'Enviar';
-                alert(JSON.stringify(err));
+                // Éxito - usando los colores del CSS
+                customSwal.fire({
+                    icon: 'success',
+                    title: '¡Mensaje Enviado!',
+                    text: 'Su solicitud de servicio ha sido enviada correctamente. Nos pondremos en contacto con usted pronto.',
+                    confirmButtonText: 'Entendido',
+                    timer: 5000,
+                    timerProgressBar: true
+                }).then(() => {
+                    // Resetear el formulario después de cerrar el modal
+                    document.getElementById('contact-form').reset();
+                    btn.innerHTML = 'ENVIAR';
+                    btn.disabled = false;
+                });
+            })
+            .catch((error) => {
+                // Error - usando los colores del CSS
+                customSwal.fire({
+                    icon: 'error',
+                    title: 'Error al Enviar',
+                    text: 'Ocurrió un problema al enviar su mensaje. Por favor, inténtelo nuevamente.',
+                    confirmButtonText: 'Reintentar',
+                    footer: `<small style="color: #636363;">Error técnico: ${error.text || 'Error desconocido'}</small>`
+                });
+                
+                btn.innerHTML = 'ENVIAR';
+                btn.disabled = false;
             });
         });
     </script>
