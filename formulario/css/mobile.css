@@ -141,7 +141,7 @@
     .bottom,
     .top {
         width: var(--percent-auto);
-        height: 123px;
+        height: 125px;
         background-color: hsla(0, 0%, 100%, 0.7);
         transition: all 0.3s ease;
     }
