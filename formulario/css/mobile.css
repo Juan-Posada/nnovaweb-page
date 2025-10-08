@@ -18,7 +18,7 @@
         -o-animation: AnimationName 7s ease infinite;
         animation: AnimationName 7s ease infinite;
         flex-direction: column;
-        padding-top: 50px;
+        padding-top: 65px;
         align-items: center;
     }
 
@@ -141,7 +141,7 @@
     .bottom,
     .top {
         width: var(--percent-auto);
-        height: 125px;
+        height: 123px;
         background-color: hsla(0, 0%, 100%, 0.7);
         transition: all 0.3s ease;
     }
