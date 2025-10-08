@@ -297,7 +297,7 @@
 
     /* ------------------------------------------------------------------------------------------------------ */
     section.news{
-        height: 820px;
+        height: 800px;
         margin-top: 0;
     }
 
@@ -566,14 +566,14 @@
     section.we{
         width: var(--percent-auto);
         height: 720px;
-        gap: 40px;
+        gap: 50px;
         flex-direction: column-reverse;
-        padding-top: 50px;
+        padding-top: 10px;
     }
 
     div.we-video{
         width: 350px;
-        height: 350px;
+        height: 280px;
         display: flex;
     }
 
