@@ -72,6 +72,10 @@ a.redirect:hover{
     border-bottom: 3px var(--azul-logo) solid;
 }
 
+div.burger-menu{
+    display: none;
+}
+
 div.login{
     width: 120px;
     height: 120px;
