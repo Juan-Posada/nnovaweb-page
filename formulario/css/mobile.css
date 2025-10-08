@@ -18,7 +18,7 @@
         -o-animation: AnimationName 7s ease infinite;
         animation: AnimationName 7s ease infinite;
         flex-direction: column;
-        padding-top: 65px;
+        padding-top: 40px;
         align-items: center;
     }
 
@@ -28,7 +28,7 @@
         position: relative;
         width: var(--percent-auto);
         height: 354px;
-        margin-bottom: 45px;
+        margin-bottom: 65px;
         display: flex;
         justify-content: end;
         gap: 20px;
