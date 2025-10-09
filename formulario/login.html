@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/login.css">
+    <!-- Librerías fondo nubes -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
+
+</head>
+
+<body id="body">
+    <section class="card">
+        <div class="card-login">
+            <div class="title-box">
+                <div class="title">
+                    <h1>Iniciar Sesión</h1>
+                </div>
+                <h2 class="subtitle">Accede a NNOVAWEB con tu usario y contraseña</h2>
+            </div>
+            <div class="inputs-div">
+                <div class="box-input">
+                    <div class="logo-input">
+                        <img src="img/people.png" alt="people">
+                    </div>
+                    <input type="text" class="input">
+                </div>
+                <div class="box-input">
+                    <div class="logo-input">
+                        <img src="img/password.png" alt="people">
+                    </div>
+                    <input type="password" class="input">
+                </div>
+                <div class="box-input-send">
+                    <a href="../cruds/index.html">Inicar Sesión</a>
+                </div>
+            </div>
+            <div class="register">
+                <h1>Sí todavía no tienes una cuenta, <a href="index.html">Regístrate aquí</a></h1>
+            </div>
+        </div>
+    </section>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        VANTA.CLOUDS({
+            el: "#body",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00
+        })
+    });
+</script>
+
+
+
+</html>
