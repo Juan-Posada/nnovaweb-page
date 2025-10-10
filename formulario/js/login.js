@@ -87,8 +87,8 @@ document.head.appendChild(style);
 
 // Usuarios predefinidos para login
 const usuarios = {
-    juanPosada: { password: "1234", redirect: "../cruds/index.html" },
-    mariaPaula: { password: "1234", redirect: "../cruds/customer-view.html" }
+    mariaPaula: { password: "1234", redirect: "../cruds/index.html" },
+    juanPosada: { password: "1234", redirect: "../cruds/customer-view.html" }
 };
 
 // Validación de login
