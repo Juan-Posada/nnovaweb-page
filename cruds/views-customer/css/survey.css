@@ -155,7 +155,7 @@ section.content{
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7.3px);
     -webkit-backdrop-filter: blur(7.3px);
-    border: 1px solid rgba(255, 255, 255, 0.13);
+    border: 2px solid rgba(255, 255, 255, 0.13);
     border-radius: 20px;
     display: flex;
     justify-content: end;
@@ -205,7 +205,7 @@ section.content{
 
 .question-container{
     width: 95%;
-    min-height: 290px;
+    min-height: 310px;
     display: flex;
     justify-content: center;
     align-items: center;
