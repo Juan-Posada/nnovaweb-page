@@ -6,6 +6,12 @@
     --negro: #000000;
     --blanco: #ffffff;
     --medida-completa: 100%;
+    
+    /* Nuevos colores para efectos hover y transiciones */
+    --azul-hover: #0a0050;
+    --azul-claro-hover: #6ba8ff;
+    --sombra-input: rgba(84, 152, 255, 0.3);
+    --sombra-boton: rgba(84, 152, 255, 0.5);
 }
 
 html,body {
@@ -38,6 +44,8 @@ section.card{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    opacity: 1;
+    transform: scale(1);
 }
 
 .title-box{
@@ -48,14 +56,15 @@ section.card{
     align-items: center;
     flex-direction: column;
     margin-bottom: 70px;
-    h2.subtitle{
-        text-align: center;
-        color: white;
-        font-weight: 200;
-        line-height: 1;
-        font-size: 16px;
-        width: 65%;
-    }
+}
+
+.title-box h2.subtitle{
+    text-align: center;
+    color: white;
+    font-weight: 200;
+    line-height: 1;
+    font-size: 16px;
+    width: 65%;
 }
 
 .title{
@@ -69,12 +78,19 @@ section.card{
     display: flex;
     justify-content: center;
     align-items: end;
-    h1{
-        text-align: center;
-        color: var(--blanco);
-        font-size: 40px;
-        font-weight: 600;
-    }
+    transition: all 0.3s ease;
+}
+
+.title:hover{
+    border-color: var(--azul-claro-logo);
+    box-shadow: 0 5px 15px rgba(84, 152, 255, 0.2);
+}
+
+.title h1{
+    text-align: center;
+    color: var(--blanco);
+    font-size: 40px;
+    font-weight: 600;
 }
 
 .inputs-div{
@@ -98,26 +114,85 @@ section.card{
     display: flex;
     justify-content: center;
     align-items: center;
-    .logo-input{
-        height: var(--medida-completa);
-        width: 19.5%;
-        background-color: var(--azul-oscuro-logo);
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        img{
-            width: 15px;
-        }
-    }
-    input.input{
-        height: var(--medida-completa);
-        width: 80.5%;
-        padding: 10px 20px;
-        font-size: 15px;
-        color: var(--azul-oscuro-logo);
-    }
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.box-input::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--azul-claro-logo), var(--verde-claro-logo));
+    transition: width 0.4s ease;
+}
+
+.box-input:focus-within{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px var(--sombra-input);
+}
+
+.box-input:focus-within::before{
+    width: 100%;
+}
+
+.box-input:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.box-input .logo-input{
+    height: var(--medida-completa);
+    width: 19.5%;
+    background-color: var(--azul-oscuro-logo);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.box-input:focus-within .logo-input{
+    background-color: var(--azul-claro-logo);
+}
+
+.box-input:hover .logo-input{
+    background-color: var(--azul-hover);
+}
+
+.box-input .logo-input img{
+    width: 15px;
+    transition: transform 0.3s ease;
+}
+
+.box-input:focus-within .logo-input img{
+    transform: scale(1.15);
+}
+
+.box-input:hover .logo-input img{
+    transform: scale(1.1);
+}
+
+.box-input input.input{
+    height: var(--medida-completa);
+    width: 80.5%;
+    padding: 10px 20px;
+    font-size: 15px;
+    color: var(--azul-oscuro-logo);
+    transition: all 0.3s ease;
+}
+
+.box-input input.input::placeholder{
+    color: rgba(8, 0, 63, 0.4);
+    transition: color 0.3s ease;
+}
+
+.box-input input.input:focus::placeholder{
+    color: rgba(8, 0, 63, 0.6);
 }
 
 .box-input-send{
@@ -128,28 +203,95 @@ section.card{
     display: flex;
     justify-content: center;
     align-items: center;
-    a{
-        width: var(--medida-completa);
-        height: var(--medida-completa);
-        font-size: 18;
-        color: var(--blanco);
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.box-input-send::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--azul-claro-logo), transparent);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.box-input-send:hover::before{
+    width: 300px;
+    height: 300px;
+}
+
+.box-input-send:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px var(--sombra-boton);
+    background-color: var(--azul-hover);
+}
+
+.box-input-send:active{
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px var(--sombra-boton);
+}
+
+.box-input-send a{
+    width: var(--medida-completa);
+    height: var(--medida-completa);
+    font-size: 18px;
+    color: var(--blanco);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.box-input-send:hover a{
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .register{
     width: 62%;
     height: 2%;
     color: var(--blanco);
-    h1{
-        font-weight: 200;
-        font-size: 13px;
-        text-align: center;
-        a{
-            color: var(--azul-claro-logo);
-        }
-    }
+}
+
+.register h1{
+    font-weight: 200;
+    font-size: 13px;
+    text-align: center;
+}
+
+.register h1 a{
+    color: var(--azul-claro-logo);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.register h1 a::after{
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--azul-claro-hover);
+    transition: width 0.3s ease;
+}
+
+.register h1 a:hover{
+    color: var(--azul-claro-hover);
+    text-shadow: 0 0 10px rgba(84, 152, 255, 0.5);
+}
+
+.register h1 a:hover::after{
+    width: 100%;
 }
