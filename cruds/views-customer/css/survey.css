@@ -142,7 +142,7 @@ aside.sidebar{
 
 section.content{
     width: 85%;
-    height: 62%;
+    height: 69%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -150,7 +150,7 @@ section.content{
 
 .survey-box{
     height: var(--complete);
-    width: 52%;
+    width: 65%;
     background: rgba(255, 255, 255, 0.37);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7.3px);
