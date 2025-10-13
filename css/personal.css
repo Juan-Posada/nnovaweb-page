@@ -363,6 +363,7 @@ section.content::-webkit-scrollbar-thumb:active {
 /* Mobile Landscape (577px - 767px) */
 @media (max-width: 767px) {
     header.header {
+        margin-top: 30px;
         width: 90%;
         padding: 0 25px;
         height: 80px;
