@@ -97,6 +97,10 @@ div.sidebar{
             width: var(--complete);
             height: var(--complete);
             border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        img.photo-profile:hover{
+            transform: scale(1.05);
         }
     }
     .actions-profile{
@@ -113,6 +117,10 @@ div.sidebar{
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        .info-profile:hover, .logout:hover{
+            transform: scale(1.2) rotate(5deg);
         }
     }
 }
@@ -143,15 +151,43 @@ a#redirect-to{
     color: white;
     font-size: 18px;
     font-weight: normal;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+a#redirect-to::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15));
+    transition: width 0.4s ease;
+}
+
+a#redirect-to:hover::before {
+    width: 100%;
 }
 
 a#redirect-to:hover{
     background-color: hsla(0, 0%, 100%, 0.25);
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
 
 a#redirect-to:focus{
     background-color: hsla(0, 0%, 100%, 0.40);
     border-left: var(--lightBlue) 5px solid;
+}
+
+a#redirect-to img {
+    transition: transform 0.3s ease;
+}
+
+a#redirect-to:hover img {
+    transform: scale(1.1) rotate(-5deg);
 }
 
 .foot-info{
@@ -217,6 +253,22 @@ header.header{
     align-items: center;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
+    position: relative;
+}
+
+.burger-menu::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+    transform: scale(0);
+    transition: transform 0.3s ease;
+}
+
+.burger-menu:hover::after {
+    transform: scale(1.5);
 }
 
 .burger-menu:hover{
@@ -272,13 +324,18 @@ header.header{
         display: flex;
         justify-content: center;
         align-items: center;
-        transition: all .2s ease-in-out;
+        transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
         input{
             width: 80%;
             height: var(--complete);
             padding: 0 20px;
             color: white;
-            
+            transition: all 0.3s ease;
+        }
+        input:focus {
+            padding-left: 25px;
         }
         .glass{
             width: 20%;
@@ -286,11 +343,33 @@ header.header{
             display: flex;
             justify-content: center;
             align-items: center;
+            transition: transform 0.3s ease;
         }
+    }
+
+    .input-text::before {
+        content: '';
+        position: absolute;
+        left: -100%;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .input-text:hover::before {
+        left: 100%;
     }
 
     .input-text:hover{
         background-color: var(--header);
+        box-shadow: 0 0 20px rgba(84, 152, 255, 0.3);
+        transform: scale(1.02);
+    }
+
+    .input-text:hover .glass {
+        transform: scale(1.1) rotate(10deg);
     }
 
     .mode-visual{
@@ -302,11 +381,14 @@ header.header{
         border-radius: 50%;
         background-color: var(--darkBlue);
         border-radius: 50%;
-        transition: all .2s ease-in-out;
+        transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
     }
 
     .mode-visual:hover{
         background-color: var(--header);
+        box-shadow: 0 0 20px rgba(84, 152, 255, 0.3);
+        transform: scale(1.1) rotate(180deg);
     }
 }
 
@@ -322,6 +404,10 @@ header.header{
     img{
         width: 49.5px;
         height: 55px;
+        transition: transform 0.3s ease;
+    }
+    img:hover {
+        transform: scale(1.1) rotate(5deg);
     }
 }
 
@@ -337,6 +423,7 @@ section.section{
     overflow: auto;
     flex-wrap: wrap;
     scrollbar-width: none;
+    padding-bottom: 30px;
 }
 
 .data-container{
@@ -355,11 +442,30 @@ section.section{
     flex-direction: column;
     transition: all .3s ease-in-out;
     box-shadow: 6px 4px 25px 0px rgba(0,0,0,0.75);
+    position: relative;
+    overflow: hidden;
+}
+
+.data-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+}
+
+.data-container:hover::before {
+    left: 100%;
 }
 
 .data-container:hover{
     background-color: var(--cards-hover);
     scale: 1.05;
+    box-shadow: 0 10px 40px rgba(84, 152, 255, 0.3);
 }
 
 div.info-card{
@@ -376,6 +482,12 @@ div.info-card{
         font-weight: normal;
         font-size: 32px;
         text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    h3.title-card:hover {
+        transform: scale(1.05);
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     }
 
     h3.title-card::after {
@@ -399,6 +511,12 @@ div.info-card{
         font-size: 24px;
         text-align: center;
         margin-top: -5%;
+        transition: all 0.3s ease;
+    }
+
+    h4.subtitle-card:hover {
+        transform: scale(1.05);
+        color: var(--lightBlue);
     }
 }
 
@@ -421,6 +539,33 @@ div.buttons{
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    a.button-action::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+        transform: scale(0);
+        transition: transform 0.3s ease;
+    }
+
+    a.button-action:hover::before {
+        transform: scale(1);
+    }
+
+    a.button-action img {
+        transition: transform 0.3s ease;
+        position: relative;
+        z-index: 1;
+    }
+
+    a.button-action:hover img {
+        transform: scale(1.2) rotate(10deg);
     }
 
     a#edit{
@@ -430,6 +575,8 @@ div.buttons{
 
     a#edit:hover{
         transform: scale(1.1);
+        box-shadow: 0 5px 20px rgba(46, 211, 5, 0.5);
+        filter: brightness(1.1);
     }
 
     a#view{
@@ -439,6 +586,8 @@ div.buttons{
 
     a#view:hover{
         transform: scale(1.1);
+        box-shadow: 0 5px 20px rgba(84, 152, 255, 0.5);
+        filter: brightness(1.1);
     }
 
     a#delete{
@@ -448,6 +597,8 @@ div.buttons{
 
     a#delete:hover{
         transform: scale(1.1);
+        box-shadow: 0 5px 20px rgba(145, 24, 24, 0.5);
+        filter: brightness(1.2);
     }
 }
 
@@ -466,16 +617,31 @@ footer.footer{
         align-items: center;
         width: 55px;
         height: 55px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        position: relative;
         a{
             width: var(--complete);
             height: var(--complete);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         img{
             width: 75%;
             height: 75%;
+            transition: transform 0.3s ease;
         }
     }
     
+    .back:hover, .create:hover {
+        background-color: var(--white-25);
+        transform: scale(1.1);
+    }
+
+    .back:hover img, .create:hover img {
+        transform: scale(1.2) rotate(-10deg);
+    }
 }
 
 
@@ -507,14 +673,38 @@ footer.footer{
     justify-content: center;
     align-items: center;
     transition: all .4s ease-in-out;
+    position: relative;
+    overflow: hidden;
     img{
         width: 45%;
         height: 45%;
+        transition: transform 0.4s ease;
+        position: relative;
+        z-index: 1;
     }
 }
 
+.logo-create::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+    transform: scale(0);
+    transition: transform 0.4s ease;
+}
+
+.logo-create:hover::before {
+    transform: scale(1);
+}
+
 .logo-create:hover{
-    transform: rotate(-30deg);
+    transform: rotate(-30deg) scale(1.05);
+    box-shadow: 0px 0px 40px 5px rgba(255,255,255,0.3);
+}
+
+.logo-create:hover img {
+    transform: scale(1.1);
 }
 
 .create-container{
@@ -555,10 +745,12 @@ form.create{
             justify-content: center;
             align-items: center;
             border-radius: 10px;
+            transition: all 0.3s ease;
             .label-left, .label-right{
                 min-width: 25%;
                 height: var(--complete);
                 background-color: var(--label-create);
+                transition: all 0.3s ease;
             }
             .input-left, .input-right{
                 min-width: 65%;
@@ -568,12 +760,29 @@ form.create{
                 padding: 0 12px;
                 font-size: 12px;
                 transition: .4s all ease-in-out;
+                position: relative;
             }
 
+            .input-left::before, .input-right::before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                width: 0;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, var(--white), transparent);
+                transform: translateX(-50%);
+                transition: width 0.3s ease;
+            }
+
+            .input-left:focus::before, .input-right:focus::before {
+                width: 100%;
+            }
 
             input:focus{
                 background-color: var(--input-create-hover);
                 box-shadow: 0px 0px 24px -10px rgba(255,255,255,0.15) inset;
+                transform: scale(1.02);
             }
 
             .input-left, .label-right{
@@ -584,6 +793,18 @@ form.create{
                 border-top-right-radius: 10px;
                 border-bottom-right-radius: 10px;
             }
+        }
+
+        .form-group-left:hover, .form-group-right:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group-left:hover .label-left, 
+        .form-group-left:hover .label-right,
+        .form-group-right:hover .label-left, 
+        .form-group-right:hover .label-right {
+            background-color: var(--label-create-hover);
         }
     }
 }
@@ -606,7 +827,28 @@ form.create{
         justify-content: center;
         text-align: center;
         transition: .4s all ease-in-out;
+        position: relative;
+        overflow: hidden;
     }
+
+    a.exit::before, button.confirm::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+    }
+
+    a.exit:hover::before, button.confirm:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+
     a.exit{
         background-color: var(--label-create);
     }
@@ -616,10 +858,13 @@ form.create{
     }
     a.exit:hover{
         background-color: var(--label-create-hover);
-    
+        transform: translateY(-3px);
+        box-shadow: 0px 5px 35px 5px rgba(255,255,255,0.2);
     }
     button.confirm:hover{
         background-color: var(--input-create-hover);
+        transform: translateY(-3px);
+        box-shadow: 0px 5px 35px 5px rgba(255,255,255,0.2);
     }
 }
 
@@ -637,13 +882,37 @@ form.create{
     justify-content: center;
     align-items: center;
     transition: all .4s ease-in-out;
+    position: relative;
+    overflow: hidden;
     img{
         height: 45%;
+        transition: transform 0.4s ease;
+        position: relative;
+        z-index: 1;
     }
 }
 
+.logo-delete::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.2), transparent);
+    transform: scale(0);
+    transition: transform 0.4s ease;
+}
+
+.logo-delete:hover::before {
+    transform: scale(1);
+}
+
 .logo-delete:hover{
-    transform: rotate(-30deg);
+    transform: rotate(-30deg) scale(1.05);
+    box-shadow: 0px 0px 40px 5px rgba(145, 24, 24, 0.5);
+}
+
+.logo-delete:hover img {
+    transform: scale(1.1) rotate(10deg);
 }
 
 .delete-container{
@@ -682,8 +951,15 @@ form.delete{
             font-size: 30px;
             font-weight: bold;
             text-align: center;
+            animation: shake 0.5s ease infinite;
         }
     }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
 }
 
 .form-delete-buttons{
@@ -704,7 +980,28 @@ form.delete{
         justify-content: center;
         text-align: center;
         transition: .4s all ease-in-out;
+        position: relative;
+        overflow: hidden;
     }
+
+    a.exit::before, button.confirm::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+    }
+
+    a.exit:hover::before, button.confirm:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+
     a.exit{
         background-color: var(--delete-exit);
     }
@@ -714,10 +1011,13 @@ form.delete{
     }
     a.exit:hover{
         background-color: var(--delete-exit-hover);
-    
+        transform: translateY(-3px);
+        box-shadow: 0px 5px 35px 5px rgba(186, 43, 43, 0.4);
     }
     button.confirm:hover{
         background-color: var(--delete-confirm-hover);
+        transform: translateY(-3px);
+        box-shadow: 0px 5px 35px 5px rgba(86, 9, 9, 0.4);
     }
 }
 
@@ -736,14 +1036,38 @@ form.delete{
     justify-content: center;
     align-items: center;
     transition: all .4s ease-in-out;
+    position: relative;
+    overflow: hidden;
     img{
         width: 45%;
         height: 45%;
+        transition: transform 0.4s ease;
+        position: relative;
+        z-index: 1;
     }
 }
 
+.logo-edit::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(46, 211, 5, 0.3), transparent);
+    transform: scale(0);
+    transition: transform 0.4s ease;
+}
+
+.logo-edit:hover::before {
+    transform: scale(1);
+}
+
 .logo-edit:hover{
-    transform: rotate(30deg);
+    transform: rotate(30deg) scale(1.05);
+    box-shadow: 0px 0px 40px 5px rgba(46, 211, 5, 0.5);
+}
+
+.logo-edit:hover img {
+    transform: scale(1.1) rotate(-10deg);
 }
 
 .edit-container{
@@ -784,10 +1108,12 @@ form.edit{
             justify-content: center;
             align-items: center;
             border-radius: 10px;
+            transition: all 0.3s ease;
             .label-left, .label-right{
                 min-width: 25%;
                 height: var(--complete);
                 background-color: var(--label-edit);
+                transition: all 0.3s ease;
             }
             .input-left, .input-right{
                 min-width: 65%;
@@ -797,12 +1123,29 @@ form.edit{
                 padding: 0 12px;
                 font-size: 12px;
                 transition: .4s all ease-in-out;
+                position: relative;
             }
 
+            .input-left::before, .input-right::before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                width: 0;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, var(--lightGreen), transparent);
+                transform: translateX(-50%);
+                transition: width 0.3s ease;
+            }
+
+            .input-left:focus::before, .input-right:focus::before {
+                width: 100%;
+            }
 
             input:focus{
                 background-color: var(--input-edit-hover);
                 box-shadow: 0px 0px 24px -10px rgba(0,0,0,0.15) inset;
+                transform: scale(1.02);
             }
 
             .input-left, .label-right{
@@ -813,6 +1156,18 @@ form.edit{
                 border-top-right-radius: 10px;
                 border-bottom-right-radius: 10px;
             }
+        }
+
+        .form-group-left:hover, .form-group-right:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 211, 5, 0.2);
+        }
+
+        .form-group-left:hover .label-left, 
+        .form-group-left:hover .label-right,
+        .form-group-right:hover .label-left, 
+        .form-group-right:hover .label-right {
+            background-color: var(--label-edit-hover);
         }
     }
 }
@@ -835,7 +1190,28 @@ form.edit{
         justify-content: center;
         text-align: center;
         transition: .4s all ease-in-out;
+        position: relative;
+        overflow: hidden;
     }
+
+    a.exit::before, button.confirm::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.2);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+    }
+
+    a.exit:hover::before, button.confirm:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+
     a.exit{
         background-color: var(--label-edit);
     }
@@ -845,10 +1221,13 @@ form.edit{
     }
     a.exit:hover{
         background-color: var(--label-edit-hover);
-    
+        transform: translateY(-3px);
+        box-shadow: 0px 5px 35px 5px rgba(103, 238, 70, 0.3);
     }
     button.confirm:hover{
         background-color: var(--input-edit-hover);
+        transform: translateY(-3px);
+        box-shadow: 0px 5px 35px 5px rgba(36, 151, 7, 0.3);
     }
 }
 
@@ -867,14 +1246,38 @@ form.edit{
     justify-content: center;
     align-items: center;
     transition: all .4s ease-in-out;
+    position: relative;
+    overflow: hidden;
     img{
         width: 45%;
         height: 45%;
+        transition: transform 0.4s ease;
+        position: relative;
+        z-index: 1;
     }
 }
 
+.logo-view::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(84, 152, 255, 0.3), transparent);
+    transform: scale(0);
+    transition: transform 0.4s ease;
+}
+
+.logo-view:hover::before {
+    transform: scale(1);
+}
+
 .logo-view:hover{
-    transform: rotate(30deg);
+    transform: rotate(30deg) scale(1.05);
+    box-shadow: 0px 0px 40px 5px rgba(84, 152, 255, 0.5);
+}
+
+.logo-view:hover img {
+    transform: scale(1.1) rotate(-10deg);
 }
 
 .view-container{
@@ -915,10 +1318,12 @@ form.view{
             justify-content: center;
             align-items: center;
             border-radius: 10px;
+            transition: all 0.3s ease;
             .label-left, .label-right{
                 min-width: 25%;
                 height: var(--complete);
                 background-color: var(--label-view);
+                transition: all 0.3s ease;
             }
             .input-left, .input-right{
                 min-width: 65%;
@@ -963,6 +1368,18 @@ form.view{
                 border-bottom-right-radius: 10px;
             }
         }
+
+        .form-group-left:hover, .form-group-right:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(84, 152, 255, 0.3);
+        }
+
+        .form-group-left:hover .label-left, 
+        .form-group-left:hover .label-right,
+        .form-group-right:hover .label-left, 
+        .form-group-right:hover .label-right {
+            background-color: var(--label-view-hover);
+        }
     }
 }
 
@@ -996,12 +1413,34 @@ form.view{
         justify-content: center;
         text-align: center;
         transition: .4s all ease-in-out;
+        position: relative;
+        overflow: hidden;
     }
+
+    a.exit::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.2);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+    }
+
+    a.exit:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+
     a.exit{
         background-color: var(--label-view);
     }
     a.exit:hover{
         background-color: var(--label-view-hover);
-    
+        transform: translateY(-3px);
+        box-shadow: 0px 5px 35px 5px rgba(142, 187, 255, 0.3);
     }
 }

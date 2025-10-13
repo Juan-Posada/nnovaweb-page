@@ -23,6 +23,45 @@
     }
 
     /* --------------------------------------------------------------------------- */
+    /* BOTÓN FLOTANTE PARA VOLVER */
+    /* --------------------------------------------------------------------------- */
+
+    .back-button {
+        position: fixed;
+        bottom: 30px;
+        left: 20px;
+        width: 50px;
+        height: 50px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        animation: fadeSlideUp 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) backwards 1s;
+    }
+
+    .back-button:hover {
+        transform: scale(1.1);
+        background-color: rgba(255, 255, 255, 1);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-button:active {
+        transform: scale(0.95);
+    }
+
+    .back-button svg {
+        width: 24px;
+        height: 24px;
+        fill: #08003F;
+    }
+
+    /* --------------------------------------------------------------------------- */
 
     section.info-app {
         position: relative;

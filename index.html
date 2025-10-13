@@ -33,10 +33,10 @@
                         </button>
                     </div>
                     <ul class="mobile-nav-links">
-                        <li><a href="" class="mobile-link">INICIO</a></li>
                         <li><a href="" class="mobile-link">NOTICIAS</a></li>
+                        <li><a href="#we" class="mobile-link">NOSOTROS</a></li>
+                        <li><a href="#lines" class="mobile-link">LÍNEAS</a></li>
                         <li><a href="" class="mobile-link">NOSOTROS</a></li>
-                        <li><a href="" class="mobile-link">LÍNEAS</a></li>
                     </ul>
                     <div class="mobile-nav-footer">
                         <a href="formulario/mobile.html" class="mobile-login" >
@@ -47,24 +47,24 @@
                 </div>
             </nav>
             <div class="buttons-redirect">
-                <div href="" class="redirect">
-                    <a href="" class="redirect">
-                        INICIO
-                    </a>
-                </div>
-                <div href="" class="redirect">
-                    <a href="" class="redirect">
+                <div class="redirect">
+                    <a href="pages/news.html" class="redirect">
                         NOTICIAS
                     </a>
                 </div>
-                <div href="" class="redirect">
-                    <a href="" class="redirect">
+                <div class="redirect">
+                    <a href="#we" class="redirect">
                         NOSOTROS
                     </a>
                 </div>
-                <div href="" class="redirect">
-                    <a href="" class="redirect">
+                <div class="redirect">
+                    <a href="#lines" class="redirect">
                         LÍNEAS
+                    </a>
+                </div>
+                <div class="redirect">
+                    <a href="pages/personal.html" class="redirect">
+                        PERSONAL
                     </a>
                 </div>
             </div>
@@ -199,7 +199,7 @@
 
         <!-- ------------------------------------------------------------------------------------------------------------ -->
 
-        <section class="we">
+        <section class="we" id="we">
             <div class="we-video">
                 <div class="container-video">
                     <iframe
@@ -295,7 +295,7 @@
 
         <!-- ------------------------------------------------------------------------------------------------------------ -->
 
-        <section class="lines">
+        <section class="lines" id="lines">
             <div class="line" id="software">
                 <h3 class="line-text">
                     Línea
@@ -308,9 +308,6 @@
                 <h3 class="line-info">
                     Desarrollo de aplicaciones web avanzadas usando HTML, CSS, y diversas herramientas de JS.
                 </h3>
-                <a href="" class="button-redirect">
-                    <img src="images/points-green.png" alt="three-points">
-                </a>
             </div>
             <div class="line" id="construccion">
                 <h3 class="line-text">
@@ -324,9 +321,6 @@
                 <h3 class="line-info">
                     Creación de soluciones gráficas de arquitectura personalizadas para dar respuesta a las necesidades.
                 </h3>
-                <a href="" class="button-redirect">
-                    <img src="images/points-blue.png" alt="three-points">
-                </a>
             </div>
             <div class="line" id="industria">
                 <h3 class="line-text">
@@ -340,9 +334,6 @@
                 <h3 class="line-info">
                     Diseño de mecanismos, prototipos y piezas mecánicas a través de herramientas computacionales.
                 </h3>
-                <a href="" class="button-redirect">
-                    <img src="images/points-sky.png" alt="three-points">
-                </a>
             </div>
         </section>
 
@@ -376,40 +367,99 @@
             <h1 class="customer-title">
                 NUESTROS CLIENTES
             </h1>
-            <div class="containers-customer">
-                <div class="small-customer">
-                    <img src="images/amazon.png" alt="Amazon" class="customer">
-                </div>
-                <div class="small-customer">
-                    <img src="images/adidas.png" alt="Adidas" class="customer">
-                </div>
-                <div class="small-customer">
-                    <img src="images/pepsi.png" alt="Pepsi" class="customer">
-                </div>
-                <div class="big-customer">
-                    <img src="images/coca-cola.png" alt="Coca-Cola" class="big-customer-img">
-                </div>
-                <div class="small-customer">
-                    <img src="images/apple.png" alt="Apple" class="customer">
-                </div>
-                <div class="small-customer">
-                    <img src="images/nike.png" alt="Nike" class="customer">
-                </div>
-                <div class="small-customer">
-                    <img src="images/sony.png" alt="Sony" class="customer">
+            <div class="carousel-wrapper">
+                <div class="containers-customer" id="carousel-container">
+                    <!-- Cliente 1 -->
+                    <div class="customer-item">
+                        <div class="small-customer">
+                            <img src="images/amazon.png" alt="Amazon" class="customer">
+                        </div>
+                        <h5 class="customer-name">Amazon</h5>
+                        <p class="customer-location">Seattle, E.E.U.U</p>
+                    </div>
+                    <!-- Cliente 2 -->
+                    <div class="customer-item">
+                        <div class="small-customer">
+                            <img src="images/adidas.png" alt="Adidas" class="customer">
+                        </div>
+                        <h5 class="customer-name">Adidas</h5>
+                        <p class="customer-location">Herzogenaurach, Alemania</p>
+                    </div>
+                    <!-- Cliente 3 -->
+                    <div class="customer-item">
+                        <div class="small-customer">
+                            <img src="images/pepsi.png" alt="Pepsi" class="customer">
+                        </div>
+                        <h5 class="customer-name">Pepsi</h5>
+                        <p class="customer-location">Nueva York, E.E.U.U</p>
+                    </div>
+                    <!-- Cliente 4 - Destacado -->
+                    <div class="customer-item featured">
+                        <div class="big-customer">
+                            <img src="images/coca-cola.png" alt="Coca-Cola" class="big-customer-img">
+                        </div>
+                        <h5 class="customer-name">Coca-Cola</h5>
+                        <p class="customer-location">Atlanta, E.E.U.U</p>
+                    </div>
+                    <!-- Cliente 5 -->
+                    <div class="customer-item">
+                        <div class="small-customer">
+                            <img src="images/apple.png" alt="Apple" class="customer">
+                        </div>
+                        <h5 class="customer-name">Apple</h5>
+                        <p class="customer-location">Cupertino, E.E.U.U</p>
+                    </div>
+                    <!-- Cliente 6 -->
+                    <div class="customer-item">
+                        <div class="small-customer">
+                            <img src="images/nike.png" alt="Nike" class="customer">
+                        </div>
+                        <h5 class="customer-name">Nike</h5>
+                        <p class="customer-location">Beaverton, E.E.U.U</p>
+                    </div>
+                    <!-- Cliente 7 -->
+                    <div class="customer-item">
+                        <div class="small-customer">
+                            <img src="images/sony.png" alt="Sony" class="customer">
+                        </div>
+                        <h5 class="customer-name">Sony</h5>
+                        <p class="customer-location">Tokio, Japón</p>
+                    </div>
+                    <!-- Clientes adicionales (puedes agregar más aquí) -->
+                    <div class="customer-item">
+                        <div class="small-customer">
+                            <img src="images/microsoft.png" alt="Microsoft" class="customer">
+                        </div>
+                        <h5 class="customer-name">Microsoft</h5>
+                        <p class="customer-location">Redmond, E.E.U.U</p>
+                    </div>
+                    <div class="customer-item">
+                        <div class="small-customer">
+                            <img src="images/samsung.png" alt="Samsung" class="customer">
+                        </div>
+                        <h5 class="customer-name">Samsung</h5>
+                        <p class="customer-location">Seúl, Corea del Sur</p>
+                    </div>
+                    <div class="customer-item">
+                        <div class="small-customer">
+                            <img src="images/google.png" alt="Google" class="customer">
+                        </div>
+                        <h5 class="customer-name">Google</h5>
+                        <p class="customer-location">Mountain View, E.E.U.U</p>
+                    </div>
                 </div>
             </div>
             <div class="change-customers">
                 <div class="backward">
-                    <div class="back">
+                    <div class="back" id="carousel-prev">
                         <img src="images/back.png" alt="back">
                     </div>
                 </div>
                 <div class="info-customer">
-                    <h5 class="ubication">Coca-Cola, E.E.U.U</h5>
+                    <h5 class="ubication" id="current-customer-info">Coca-Cola, Atlanta, E.E.U.U</h5>
                 </div>
                 <div class="forward">
-                    <div class="next">
+                    <div class="next" id="carousel-next">
                         <img src="images/next.png" alt="next">
                     </div>
                 </div>

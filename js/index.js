@@ -1,7 +1,3 @@
-// ================================================== 
-// MENÚ HAMBURGUESA MOBILE - FUNCIONALIDAD JAVASCRIPT
-// ================================================== 
-
 document.addEventListener('DOMContentLoaded', function () {
     // Elementos del DOM
     const burgerMenu = document.querySelector('.burger-menu');
@@ -253,4 +249,170 @@ document.addEventListener("DOMContentLoaded", () => {
         // Cambiar el destino según el dispositivo
         link.href = esMovil ? "../formulario/mobile.html" : "../formulario/index.html";
     }
+});
+
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------
+// CARRUSEL DE CLIENTES - SOLO PARA DESKTOP (mayor a 768px)
+// ----------------------------------------------------------------------------------------------------------------------------------------------
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Función para verificar si estamos en modo desktop
+    function isDesktop() {
+        return window.innerWidth > 768;
+    }
+
+    // Solo ejecutar el carrusel en desktop
+    if (!isDesktop()) {
+        console.log('Modo móvil detectado - Carrusel desactivado');
+        return;
+    }
+
+    // Elementos del carrusel
+    const carouselContainer = document.getElementById('carousel-container');
+    const prevButton = document.getElementById('carousel-prev');
+    const nextButton = document.getElementById('carousel-next');
+    const customerInfo = document.getElementById('current-customer-info');
+    
+    // Verificar que los elementos existan (solo en desktop)
+    if (!carouselContainer || !prevButton || !nextButton || !customerInfo) {
+        console.log('Elementos del carrusel no encontrados');
+        return;
+    }
+    
+    // Obtener todos los items de clientes
+    const customerItems = document.querySelectorAll('.customer-item');
+    
+    // Variables del carrusel
+    let currentIndex = 3; // Empezar con Coca-Cola (índice 3) en el centro
+    let isAnimating = false;
+    
+    // Ancho de cada item + gap
+    const itemWidth = 197; // 175px (ancho) + 22px (gap)
+    
+    // Función para actualizar la información del cliente actual
+    function updateCustomerInfo() {
+        const currentItem = customerItems[currentIndex];
+        const customerName = currentItem.querySelector('.customer-name').textContent;
+        const customerLocation = currentItem.querySelector('.customer-location').textContent;
+        
+        customerInfo.textContent = `${customerName}, ${customerLocation}`;
+    }
+    
+    // Función para actualizar las clases activas
+    function updateActiveClasses() {
+        customerItems.forEach((item, index) => {
+            if (index === currentIndex) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+    }
+    
+    // Función para mover el carrusel
+    function moveCarousel() {
+        if (isAnimating) return;
+        
+        isAnimating = true;
+        
+        // Calcular el offset necesario para centrar el item actual
+        const containerWidth = document.querySelector('.carousel-wrapper').offsetWidth;
+        const offset = (containerWidth / 2) - (itemWidth / 2) - (currentIndex * itemWidth);
+        
+        // Aplicar la transformación
+        carouselContainer.style.transform = `translateX(${offset}px)`;
+        
+        // Actualizar clases y info
+        updateActiveClasses();
+        updateCustomerInfo();
+        
+        // Permitir nueva animación después de 500ms
+        setTimeout(() => {
+            isAnimating = false;
+        }, 500);
+    }
+    
+    // Event listener para botón anterior
+    prevButton.addEventListener('click', function() {
+        if (currentIndex > 0 && !isAnimating) {
+            currentIndex--;
+            moveCarousel();
+        }
+    });
+    
+    // Event listener para botón siguiente
+    nextButton.addEventListener('click', function() {
+        if (currentIndex < customerItems.length - 1 && !isAnimating) {
+            currentIndex++;
+            moveCarousel();
+        }
+    });
+    
+    // Soporte para teclado (flechas izquierda/derecha)
+    document.addEventListener('keydown', function(e) {
+        if (!isDesktop()) return; // Solo en desktop
+        
+        if (e.key === 'ArrowLeft') {
+            prevButton.click();
+        } else if (e.key === 'ArrowRight') {
+            nextButton.click();
+        }
+    });
+    
+    // NO agregar soporte para swipe en desktop
+    // El swipe solo debe funcionar en móvil con scroll nativo
+    
+    // Auto-play opcional (comentado por defecto)
+    /*
+    let autoPlayInterval;
+    
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(() => {
+            if (currentIndex < customerItems.length - 1) {
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
+            moveCarousel();
+        }, 3000); // Cambiar cada 3 segundos
+    }
+    
+    function stopAutoPlay() {
+        clearInterval(autoPlayInterval);
+    }
+    
+    // Iniciar auto-play
+    startAutoPlay();
+    
+    // Pausar auto-play al hacer hover
+    carouselContainer.addEventListener('mouseenter', stopAutoPlay);
+    carouselContainer.addEventListener('mouseleave', startAutoPlay);
+    
+    // Pausar auto-play al usar controles manuales
+    prevButton.addEventListener('click', () => {
+        stopAutoPlay();
+        setTimeout(startAutoPlay, 5000); // Reanudar después de 5 segundos
+    });
+    
+    nextButton.addEventListener('click', () => {
+        stopAutoPlay();
+        setTimeout(startAutoPlay, 5000); // Reanudar después de 5 segundos
+    });
+    */
+    
+    // Inicializar el carrusel solo en desktop
+    moveCarousel();
+    
+    // Reajustar al cambiar tamaño de ventana
+    window.addEventListener('resize', debounce(function() {
+        if (isDesktop()) {
+            moveCarousel();
+        } else {
+            // Si cambiamos a móvil, resetear el transform
+            if (carouselContainer) {
+                carouselContainer.style.transform = '';
+            }
+        }
+    }, 250));
 });

@@ -295,3 +295,45 @@ section.card{
 .register h1 a:hover::after{
     width: 100%;
 }
+
+/* Botón flotante para cerrar */
+.btn-close-page{
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(8, 0, 63, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: var(--blanco);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-close-page:hover{
+    background-color: var(--rojo);
+    border-color: var(--blanco);
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 6px 25px rgba(255, 0, 0, 0.5);
+}
+
+.btn-close-page:active{
+    transform: rotate(90deg) scale(0.95);
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+}
+
+.btn-close-page svg{
+    transition: all 0.3s ease;
+}
+
+.btn-close-page:hover svg{
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+}

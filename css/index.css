@@ -588,8 +588,13 @@ div.line#industria{
 
 h3.line-text{
     color: var(--blanco);
-    font-size: 18px;
+    font-size: 23px;
     text-align: center;
+    font-weight: 200;
+    border-top: .5px solid var(--blanco);
+    padding: 0 15px;
+    border-radius: 10px;
+    margin-top: 70px;
 }
 
 div.line-title{
@@ -609,6 +614,7 @@ h3.line-info{
     font-size: 13px;
     text-align: center;
     width: 270px;
+    margin-bottom: 60px;
 }
 
 a.button-redirect{
@@ -715,6 +721,8 @@ div.team-images{
 
 
 /* ------------------------------------------------------------------------------------------------------ */
+/* ESTILOS DEL CARRUSEL DE CLIENTES */
+/* ------------------------------------------------------------------------------------------------------ */
 
 
 section.customer{
@@ -725,7 +733,8 @@ section.customer{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 10px;
+    gap: 30px;
+    overflow: hidden;
 }
 
 h1.customer-title{
@@ -736,7 +745,114 @@ h1.customer-title{
     text-align: center;
 }
 
+/* Wrapper del carrusel */
+div.carousel-wrapper{
+    width: 95%;
+    height: 45%;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: -60px;
+}
 
+/* Contenedor de clientes (carrusel) */
+div.containers-customer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 22px;
+    transition: transform 0.5s ease-in-out;
+    padding: 20px 0;
+}
+
+/* Item individual del cliente */
+div.customer-item{
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    opacity: 0.6;
+    transform: scale(0.9);
+    transition: all 0.5s ease-in-out;
+}
+
+/* Cliente activo (centro) */
+div.customer-item.active{
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Cliente destacado */
+div.customer-item.featured .big-customer{
+    width: 175px;
+    height: 175px;
+}
+
+div.small-customer{
+    width: 175px;
+    height: 175px;
+    border-radius: 15px;
+    background-color: var(--blanco);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+div.big-customer{
+    width: 175px;
+    height: 175px;
+    border-radius: 15px;
+    background-color: var(--blanco);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+img.customer{
+    width: 60px;
+    transition: all 0.3s ease;
+}
+
+img.big-customer-img{
+    width: 60px;
+    transition: all 0.3s ease;
+}
+
+/* Hover effects */
+div.customer-item.active .small-customer,
+div.customer-item.active .big-customer{
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+}
+
+/* Nombre y ubicación del cliente */
+h5.customer-name{
+    color: var(--blanco);
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    margin-bottom: -15px;
+}
+
+p.customer-location{
+    color: var(--blanco);
+    font-weight: 300;
+    font-size: 14px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+div.customer-item.active h5.customer-name,
+div.customer-item.active p.customer-location{
+    opacity: 1;
+}
+
+/* Controles del carrusel */
 div.change-customers{
     width: var(--percent-auto);
     height: 15%;
@@ -744,6 +860,7 @@ div.change-customers{
     align-items: center;
     justify-content: center;
     gap: 15px;
+    padding-right: 40px;
 }
 
 div.backward, div.forward{
@@ -756,7 +873,7 @@ div.backward, div.forward{
 
 div.info-customer{
     height: 85%;
-    width: 11%;
+    width: 300px;
     border-left: 2px solid var(--blanco);
     border-right: 2px solid var(--blanco);
     display: flex;
@@ -773,54 +890,26 @@ div.back, div.next{
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+div.back:hover, div.next:hover{
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.4);
+}
+
+div.back:active, div.next:active{
+    transform: scale(0.95);
 }
 
 h5.ubication{
     width: var(--percent-auto);
     color: var(--blanco);
-    font-weight: 200;
+    font-weight: 300;
     font-size: 16px;
     text-align: center;
+    padding: 0 20px;
 }
-
-div.containers-customer{
-    width: 95%;
-    height: 35%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 22px;
-}
-
-div.small-customer{
-    width: 175px;
-    height: 175px;
-    border-radius: 15px;
-    background-color: var(--blanco);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-div.big-customer{
-    width: 215px;
-    height: 215px;
-    border-radius: 15px;
-    background-color: var(--blanco);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-img.customer{
-    width: 60px;
-}
-
-img.big-customer{
-    width: 100px;
-}
-
-
 
 
 /* ------------------------------------------------------------------------------------------------------ */

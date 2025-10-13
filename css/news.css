@@ -1,0 +1,31 @@
+:root {
+    --percent-auto: 100%;
+    --azul-logo: #08003F;
+    --blanco: white;
+    --blanco-transparente-20: hsla(0, 0%, 100%, 0.2);
+    --cielo: #5498FF;
+    --negro: black;
+    --verde-logo: #2ED305;
+}
+
+html{
+    overflow-y: scroll;
+}
+
+body{
+    overflow-y: hidden;
+}
+
+html,body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+canvas {
+    display: block;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
